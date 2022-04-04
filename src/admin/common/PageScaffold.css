@@ -1,0 +1,14 @@
+.PageScaffold {
+  @apply h-full;
+}
+
+.PageScaffold__header {
+  @apply mb-8;
+}
+
+.PageScaffold__header__title {
+  @apply text-h3 text-primary;
+}
+
+.PageScaffold__header__description {
+}

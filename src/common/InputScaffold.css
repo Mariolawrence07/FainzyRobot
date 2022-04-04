@@ -1,0 +1,47 @@
+/* .InputScaffold {
+  @apply inline-block;
+}
+
+.InputScaffold--gutterBottom {
+  @apply mb-4;
+}
+
+.InputScaffold--fullWidth {
+  @apply w-full block;
+}
+
+.InputScaffold__label {
+  @apply text-label text-primary block mb-1;
+}
+
+.InputScaffold__inputWrapper {
+  @apply bg-primary-shade4 flex justify-center gap-2 text-h6 text-shade2 px-4 rounded-lg;
+}
+
+.InputScaffold__inputWrapper--small {
+  height: 40px;
+}
+
+.InputScaffold__inputWrapper--medium {
+  height: 48px;
+}
+.InputScaffold__inputWrapper--large {
+  height: 56px;
+}
+
+.InputScaffold__inputWrapper:focus-within {
+  @apply ring-primary;
+}
+
+.InputScaffold__inputWrapper__prefix,
+.InputScaffold__inputWrapper__suffix {
+  @apply self-center;
+}
+
+.InputScaffold__helperText {
+  @apply text-small text-shade3 p-1;
+}
+
+.InputScaffold__helperText--error {
+  @apply text-red-500;
+} */

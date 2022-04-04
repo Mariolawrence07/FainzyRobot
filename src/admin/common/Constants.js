@@ -1,0 +1,2 @@
+export const NAV_SIDEBAR_FULL_WIDTH = 270;
+export const NAV_SIDEBAR_COLLAPSED_WIDTH = 64;

@@ -1,0 +1,17 @@
+/* .Modal {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  inset: 0px;
+  @apply z-modal overflow-hidden invisible;
+}
+
+.Modal--keepMounted {
+  display: flex;
+}
+
+.Modal--open {
+  display: flex;
+  visibility: visible;
+} */
