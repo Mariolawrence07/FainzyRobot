@@ -1,7 +1,7 @@
 export const RouteEnum = {
   LOGIN: '/login',
   REGISTER: '/register',
-  HOME: '/home',
+  HOME: '/',
   PRODUCTS: '/products',
   PRODUCTS_DETAIL: '/products/:slug',
   ABOUT: '/about',
