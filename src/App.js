@@ -11,7 +11,7 @@ import 'assets/slick/slick-theme.css';
 function App () {
   const ROUTES = useRoutes ([
     {
-      path: RouteEnum.PRODUCTS,
+      path: RouteEnum.PRODUCTS_DETAIL,
       element: <Products />,
     },
     {
