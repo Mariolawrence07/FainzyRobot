@@ -194,7 +194,7 @@ export default function Navbar(props) {
 }
 
 const LINKS = [
-  { name: "About Us", to: RouteEnum.HOME, exact: true },
+  { name: "About Us", to: RouteEnum.ABOUT},
   { name: "Products", to: RouteEnum.PRODUCTS },
   { name: "Careers", to: RouteEnum.ABOUT },
   { name: "Contact Us", to: RouteEnum.CONTACT_US },
