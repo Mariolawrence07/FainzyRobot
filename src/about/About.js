@@ -2,7 +2,7 @@ import { Typography, Button } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import ContainerSection from "common/ContainerSection";
 import React from "react";
-import { TempleBuddhist } from "@mui/icons-material";
+
 
 const About = () => {
   return (
