@@ -9,7 +9,7 @@ const About = () => {
     <ContainerSection whiteNavbar>
       <header
         style={{
-          background: "#3973CA",
+          background: "linear-gradient(180deg, #3973CA 0%, #081F60 100%)",
           height: "60vh",
         }}
         className="w-full  relative flex justify-center items-center"

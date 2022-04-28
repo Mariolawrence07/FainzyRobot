@@ -8,6 +8,8 @@ import Products from 'products/Products';
 import 'assets/slick/slick.css';
 import 'assets/slick/slick-theme.css';
 import About from 'about/About';
+import Career from 'careers/Career';
+import Contact from 'contactUs/Contact';
 
 function App () {
   const ROUTES = useRoutes ([
@@ -20,8 +22,16 @@ function App () {
       element: <About />,
     },
     {
+      path: RouteEnum.CAREERS,
+      element: <Career />,
+    },
+    {
       path: RouteEnum.HOME,
       element: <Home />,
+    },
+    {
+      path: RouteEnum.CONTACT_US,
+      element: <Contact />,
     },
     {
       path: '*',

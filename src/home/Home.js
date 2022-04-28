@@ -92,6 +92,7 @@ export default function Home() {
               variant="contained"
               size="small"
               style={{ padding: "10px 20px" }}
+            
             >
               Learn More
             </Button>
@@ -126,7 +127,7 @@ export default function Home() {
       {/* end about us */}
 
       {/* start what we offer */}
-      <section className="w-full min-h-screen relative flex items-center">
+      <section className="w-full min-h-screen relative flex items-center" id="products">
         <div className="w-full my-24">
           <div className="flex justify-center">
             <div className=" max-w-sm text-center">

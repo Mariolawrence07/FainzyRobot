@@ -142,18 +142,31 @@ export default function Navbar(props) {
               <ul
                 class={`flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium`}
               >
-                {LINKS.map(({ name, ...link }) => (
+                {LINKS.map(({ name, sectionId, ...link }) => (
                   <li>
-                    <NavLink
-                      key={name}
-                      className={`block py-2 pr-4 pl-3 ${
-                        whiteNavbar ? "text-white" : "text-dark-blue"
-                      } rounded md:bg-transparent  md:p-0`}
-                      {...link}
-                      onClick={toggleMenuLink}
-                    >
-                      {name}
-                    </NavLink>
+                    {!sectionId && (
+                      <NavLink
+                        key={name}
+                        className={`block py-2 pr-4 pl-3 ${
+                          whiteNavbar ? "text-white" : "text-dark-blue"
+                        } rounded md:bg-transparent  md:p-0`}
+                        {...link}
+                        onClick={toggleMenuLink}
+                      >
+                        {name}
+                      </NavLink>
+                    )}
+                    {sectionId && (
+                      <a
+                        className={`block py-2 pr-4 pl-3 ${
+                          whiteNavbar ? "text-white" : "text-dark-blue"
+                        } rounded md:bg-transparent  md:p-0`}
+                        onClick={toggleMenuLink}
+                        href={sectionId}
+                      >
+                        {name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -194,8 +207,8 @@ export default function Navbar(props) {
 }
 
 const LINKS = [
-  { name: "About Us", to: RouteEnum.ABOUT},
-  { name: "Products", to: RouteEnum.PRODUCTS },
-  { name: "Careers", to: RouteEnum.ABOUT },
+  { name: "About Us", to: RouteEnum.ABOUT },
+  { name: "Products", to: RouteEnum.PRODUCTS, sectionId: "#products" },
+  { name: "Careers", to: RouteEnum.CAREERS },
   { name: "Contact Us", to: RouteEnum.CONTACT_US },
 ];

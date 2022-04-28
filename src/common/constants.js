@@ -8,6 +8,7 @@ export const RouteEnum = {
   CONTACT_US: '/contact-us',
   BLOG: '/blog',
   CART: '/cart',
+  CAREERS: '/careers',
   CHECKOUT: '/checkout',
   ACCOUNT: '/account',
   ADMIN_DASHBOARD: '/admin',
