@@ -1,6 +1,7 @@
 import { Button, Rating, Typography } from "@mui/material";
 import ContainerSection from "common/ContainerSection";
 import React from "react";
+import { Link } from "react-router-dom";
 import ProductDetailSlider from "./ProductDetailSlider";
 
 export default function Products() {
@@ -41,7 +42,7 @@ export default function Products() {
                 <Typography variant="h5">$24,943</Typography>
               </div>
 
-              <div className="mt-8 flex flex-col gap-5">
+              {/* <div className="mt-8 flex flex-col gap-5">
                 <div className="flex justify-between gap-2 items-center">
                   <Typography variant="subtitle1">Color</Typography>
                   <div></div>
@@ -67,9 +68,9 @@ export default function Products() {
                   <Typography variant="subtitle1">Quantity</Typography>
                   <></>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="grid grid-cols-3 gap-3 mt-10">
+              {/* <div className="grid grid-cols-3 gap-3 mt-10">
                 <Button
                   variant="contained"
                   size="large"
@@ -88,8 +89,8 @@ export default function Products() {
                 >
                   Added To Cart
                 </Button>
-              </div>
-
+              </div> */}
+              <Link to="/contact-us">
               <Button
                 variant="contained"
                 size="large"
@@ -97,8 +98,9 @@ export default function Products() {
                 className="text-black bg-gray-300 mt-5 font-semibold"
                 fullWidth
               >
-                Added To Cart
+                Contact Us
               </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,14 +1,21 @@
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import { RouteEnum } from "common/constants";
 import Logo from "common/Logo";
 import React, { useState } from "react";
 
 import { Link, NavLink } from "react-router-dom";
-import { ReactComponent as Call } from "assets/svgs/call.svg";
-import { ReactComponent as Message } from "assets/svgs/message.svg";
+// import { ReactComponent as Call } from "assets/svgs/call.svg";
+// import { ReactComponent as Message } from "assets/svgs/message.svg";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import clsx from "clsx";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Grow from "@mui/material/Grow";
+import Paper from "@mui/material/Paper";
+import Popper from "@mui/material/Popper";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
+import Stack from "@mui/material/Stack";
 
 export default function Navbar(props) {
   const { whiteNavbar } = props;
@@ -30,6 +37,39 @@ export default function Navbar(props) {
   }, []);
 
   const selectLaguage = <div className="flex text-red">English</div>;
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   return (
     <div
@@ -43,7 +83,7 @@ export default function Navbar(props) {
           whiteNavbar ? "bg-white" : "bg-dark-blue"
         }`}
       >
-        <div className="container ">
+        {/* <div className="container ">
           <div className="flex justify-between sm:flex-row flex-col py-2 ">
             <div
               className={`flex sm:flex-row flex-col gap-6 ${
@@ -70,7 +110,7 @@ export default function Navbar(props) {
             </div>
             {selectLaguage}
           </div>
-        </div>
+        </div> */}
       </div>
 
       <nav
@@ -175,27 +215,65 @@ export default function Navbar(props) {
                 class={`flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium`}
               >
                 <li>
-                  <NavLink
-                    className={`block py-2 pr-4 pl-3 ${
-                      whiteNavbar ? "text-white" : "text-light-blue"
-                    } rounded md:bg-transparent  md:p-0`}
-                    to={RouteEnum.REGISTER}
-                    onClick={toggleMenuLink}
-                    name="Sign in"
+                  <Stack
+                    direction="row"
+                    spacing={2}
+                    className="flex items-center"
                   >
-                    Sign in
-                  </NavLink>
-                </li>
-
-                <li>
-                  <Button
-                    variant="contained"
-                    className="font-semibold"
-                    size="medium"
-                    disableElevation
-                  >
-                    Sign Up
-                  </Button>
+                    <div>{selectLaguage}</div>
+                    <div>
+                      <Button
+                        ref={anchorRef}
+                        id="composition-button"
+                        aria-controls={open ? "composition-menu" : undefined}
+                        aria-expanded={open ? "true" : undefined}
+                        aria-haspopup="true"
+                        onClick={handleToggle}
+                        variant="contained"
+                      >
+                        Business
+                      </Button>
+                      <Popper
+                        open={open}
+                        anchorEl={anchorRef.current}
+                        role={undefined}
+                        placement="bottom-start"
+                        transition
+                        disablePortal
+                      >
+                        {({ TransitionProps, placement }) => (
+                          <Grow
+                            {...TransitionProps}
+                            style={{
+                              transformOrigin:
+                                placement === "bottom-start"
+                                  ? "left top"
+                                  : "left bottom",
+                            }}
+                          >
+                            <Paper>
+                              <ClickAwayListener onClickAway={handleClose}>
+                                <MenuList
+                                  autoFocusItem={open}
+                                  id="composition-menu"
+                                  aria-labelledby="composition-button"
+                                  onKeyDown={handleListKeyDown}
+                                  className="mt-2"
+                                >
+                                  <MenuItem onClick={handleClose}>
+                                    <Link to="/login">SignIn</Link>
+                                  </MenuItem>
+                                  <MenuItem onClick={handleClose}>
+                                    <Link to="/register">SignUp</Link>
+                                  </MenuItem>
+                                </MenuList>
+                              </ClickAwayListener>
+                            </Paper>
+                          </Grow>
+                        )}
+                      </Popper>
+                    </div>
+                  </Stack>
                 </li>
               </ul>
             </div>

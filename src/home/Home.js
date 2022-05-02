@@ -92,7 +92,6 @@ export default function Home() {
               variant="contained"
               size="small"
               style={{ padding: "10px 20px" }}
-            
             >
               Learn More
             </Button>
@@ -127,7 +126,10 @@ export default function Home() {
       {/* end about us */}
 
       {/* start what we offer */}
-      <section className="w-full min-h-screen relative flex items-center" id="products">
+      <section
+        className="w-full min-h-screen relative flex items-center"
+        id="products"
+      >
         <div className="w-full my-24">
           <div className="flex justify-center">
             <div className=" max-w-sm text-center">
@@ -408,13 +410,22 @@ export default function Home() {
                     </Typography>
 
                     <Button
-                      className="mt-8 font-semibold  text-gray-800 bg-white"
+                      className="m-2 font-semibold  text-gray-800 bg-white"
                       variant="contained"
                       //   color="white"
                       size="large"
                       style={{ padding: "11px 22px" }}
                     >
                       Contact Us
+                    </Button>
+                    <Button
+                      className="m-2 font-semibold    "
+                      variant="contained"
+                      //   color="white"
+                      size="large"
+                      style={{ padding: "11px 22px", color: "white" }}
+                    >
+                      Get Started
                     </Button>
                   </div>
                 </div>
