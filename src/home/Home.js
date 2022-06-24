@@ -28,7 +28,7 @@ export default function Home() {
   const { t } = useTranslation(["home", "common"]);
 
   const { isLoading, isError, data } = WebsiteAPI.useContentQuery();
-  console.log("data", data);
+  console.log("data", data, isLoading, isError);
 
   return (
     <ContainerSection whiteNavbar>

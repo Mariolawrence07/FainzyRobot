@@ -20,7 +20,7 @@ export default function Products() {
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-5 items-center py-[100px] md:flex-row flex-col z-10 px-5 md:px-2">
           <div>
             <div className="max-h-lg">
-              <img src={thisProduct.Image} />
+              <img alt ={thisProduct.name} src={thisProduct.Image} />
             </div>
           </div>
 
@@ -289,6 +289,7 @@ export default function Products() {
             style={{ margin: "auto", borderRadius: "24px" }}
           >
             <iframe
+              title="demoVideo"
               src={thisProduct.video}
               width="100%"
               height="500px"
