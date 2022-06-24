@@ -60,7 +60,7 @@ export default function Navbar(props) {
       </option>
     </select>
   </div>;
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
   // const handleToggle = () => {
