@@ -34,11 +34,9 @@ const Career = () => {
               Life at <span className="text-light-blue">Fainzy Tech</span>
             </Typography>
             <Typography variant="body1" className="mt-5 text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam
-              varius faucibus malesuada aenean elementum. In proin nibh aliquet
-              penatibus odio lobortis. Tincidunt amet imperdiet nunc facilisis
-              lorem at tortor etiam. Enim nunc venenatis ut pulvinar eget id
-              cursus venenatis integer.
+              Joining the Fainzy Tech team guarantees you a meaningful
+              experience of groundbreaking work, with like-minded world
+              changers, in a positively reinforcing work environment.
             </Typography>
           </div>
         </div>
@@ -84,8 +82,10 @@ const Career = () => {
                   <div>
                     <div className="flex">
                       <div className="max-w-2xl">
-                        <img src="https://res.cloudinary.com/fainzy-technologies/image/upload/v1650885800/map_g3z7l3.png"
-                        alt="map"/>
+                        <img
+                          src="https://res.cloudinary.com/fainzy-technologies/image/upload/v1650885800/map_g3z7l3.png"
+                          alt="map"
+                        />
                       </div>
                     </div>
                   </div>

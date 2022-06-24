@@ -7,8 +7,29 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Slider from "react-slick";
+import WebsiteAPI from "api/WebsiteAPI";
 
 export default function Home() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 9000,
+    autoplaySpeed: 5000,
+    // cssEase: "linear",
+    nextArrow: <></>,
+    prevArrow: <></>,
+  };
+  const { t } = useTranslation(["home", "common"]);
+
+  const { isLoading, isError, data } = WebsiteAPI.useContentQuery();
+  console.log("data", data);
+
   return (
     <ContainerSection whiteNavbar>
       <header
@@ -20,19 +41,20 @@ export default function Home() {
         <Circle className="hidden md:block absolute left-0" />
         <div className="container grid grid-cols-1 md:grid-cols-2 items-end py-[100px] md:flex-row flex-col z-10 px-5 md:px-2">
           <div className="flex gap-2 md:flex-row flex-col">
-            <div className="max-w-md">
+            <div className="max-w-xl">
               <Typography variant="h1" color="white" className="font-bold">
-                先駆者
+                PIONEERING
               </Typography>
               <Typography variant="h1" className="text-primary-light font-bold">
-                ニューノーマル
+                THE NEW NORMAL
               </Typography>
               <Typography
                 variant="body-1"
                 className="text-gray-100 mt-10  block"
               >
-                At Fainzy Technologies, we are committed to building solutions
-                to ease transportant and create automation
+                {t(
+                  "At Fainzy Technologies, we are committed to being the frontliners of technological development that improves lives and creates ease."
+                )}
               </Typography>
               <Button
                 className="capitalize font-semibold mt-16"
@@ -62,14 +84,29 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          <div>
-            <img
-              src="https://res.cloudinary.com/fainzy-technologies/image/upload/v1649235689/headerImage_coel8n.png"
-              className="w-full max-w-[500px]"
-              alt="Robot"
-            />
-          </div>
+          <Slider {...settings}>
+            <div>
+              <img
+                src="https://res.cloudinary.com/fainzy-technologies/image/upload/v1655995148/C6_05_May_2022_004.305_s1nvwv.png"
+                className="pr"
+                alt="Robot"
+              />
+            </div>
+            <div>
+              <img
+                src="https://res.cloudinary.com/fainzy-technologies/image/upload/v1655838260/C2_Zi_boT_003.328_arby0v.png"
+                className=""
+                alt="Robot"
+              />
+            </div>
+            <div>
+              <img
+                src="https://res.cloudinary.com/fainzy-technologies/image/upload/v1655997323/C5_foodiy_Bot_006.112_cy7q8a.png"
+                className=""
+                alt="Robot"
+              />
+            </div>
+          </Slider>
         </div>
       </header>
 
@@ -79,22 +116,24 @@ export default function Home() {
           <div className="flex flex items-center flex-col justify-center ">
             <div className=" max-w-sm text-center">
               <Typography variant="h2" className="text-light-blue">
-                About us
+                About Us
               </Typography>
               <Typography variant="body1" className="mt-5 text-gray-400">
-                At Fainzy Technologies, we are committed to Lorem ipsum dolor
-                sit amet, consectetur adipiscing elit. Tristique suscipit sem
-                laoreet sagittis, id.
+                Fainzy Technologies is an all-encompassing Technological
+                company, built around the idea and principle of making life
+                easier for humans
               </Typography>
             </div>
-            <Button
-              className="mt-8 font-semibold max-w-xs"
-              variant="contained"
-              size="small"
-              style={{ padding: "10px 20px" }}
-            >
-              Learn More
-            </Button>
+            <Link to="/about">
+              <Button
+                className="mt-8 font-semibold max-w-xs"
+                variant="contained"
+                size="small"
+                style={{ padding: "10px 20px" }}
+              >
+                Learn More
+              </Button>
+            </Link>
           </div>
 
           <div className="mt-[200px]">
@@ -102,12 +141,12 @@ export default function Home() {
               <div className="flex justify-center order-2 md:order-1 mt-5 md:mt-0">
                 <div className="max-w-md">
                   <Typography variant="h2">
-                    We think everything can be a lot easier! the
+                    We believe living can be more efficient with the right
+                    technology
                   </Typography>
                   <Typography variant="body1" className="mt-5 text-gray-400">
-                    At Fainzy Technologies, we are committed to Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit. Tristique
-                    suscipit sem laoreet sagittis, id.
+                    At Fainzy Technologies, we implement forward thinking and
+                    innovation to meet human needs and deliver ease.
                   </Typography>
                 </div>
               </div>
@@ -150,18 +189,22 @@ export default function Home() {
                     Efficient Food Ordering System
                   </Typography>
                   <Typography variant="body1" className="mt-5 text-gray-400">
-                    At Fainzy Technologies, we are committed to Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit.
+                    Our Food Ordering System brings restaurants and consumers
+                    together on one application, where consumers can order food
+                    from restaurants they love, and have their food delivered to
+                    their location by our robot.
                   </Typography>
-                  <Button
-                    className="mt-8 font-semibold max-w-xs"
-                    variant="contained"
-                    size="large"
-                    fullWidth
-                    style={{ padding: "11px 22px" }}
-                  >
-                    Learn More
-                  </Button>
+                  <Link to="/products/1">
+                    <Button
+                      className="mt-8 font-semibold max-w-xs"
+                      variant="contained"
+                      size="large"
+                      fullWidth
+                      style={{ padding: "11px 22px" }}
+                    >
+                      Learn More
+                    </Button>
+                  </Link>
                 </div>
               </div>
 
@@ -189,18 +232,20 @@ export default function Home() {
                       Last Mile Delivery Robot System
                     </Typography>
                     <Typography variant="body1" className="mt-5 text-gray-400">
-                      At Fainzy Technologies, we are committed to Lorem ipsum
-                      dolor sit amet, consectetur adipiscing elit.{" "}
+                      The Last Mile Delivery System uses our robot to take food
+                      deliveries from restaurants to consumers' locations.{" "}
                     </Typography>
-                    <Button
-                      className="mt-8 font-semibold max-w-xs"
-                      variant="contained"
-                      size="large"
-                      fullWidth
-                      style={{ padding: "11px 22px" }}
-                    >
-                      Learn More
-                    </Button>
+                    <Link to="/products/2">
+                      <Button
+                        className="mt-8 font-semibold max-w-xs"
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        style={{ padding: "11px 22px" }}
+                      >
+                        Learn More
+                      </Button>
+                    </Link>
                   </div>
                 </div>
 
@@ -224,21 +269,26 @@ export default function Home() {
               <div className="flex justify-center mt-5 md:mt-0">
                 <div className="max-w-md">
                   <Typography variant="h2" className="text-white">
-                    Restaurant Delivery Robot
+                    Restaurant Robot Delivery System
                   </Typography>
                   <Typography variant="body1" className="mt-5 text-gray-400">
-                    At Fainzy Technologies, we are committed to Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit.
+                    Our in-restaurant delivery robot, designed to limit physical
+                    contact between restaurant staff and sit-in consumers, makes
+                    the rounds in restaurants, receiving orders from consumers
+                    through a tablet and returning the same order to the
+                    consumers as they are seated in the restaurant.
                   </Typography>
-                  <Button
-                    className="mt-8 font-semibold max-w-xs"
-                    variant="contained"
-                    size="large"
-                    fullWidth
-                    style={{ padding: "11px 22px" }}
-                  >
-                    Learn More
-                  </Button>
+                  <Link to="/products/3">
+                    <Button
+                      className="mt-8 font-semibold max-w-xs"
+                      variant="contained"
+                      size="large"
+                      fullWidth
+                      style={{ padding: "11px 22px" }}
+                    >
+                      Learn More
+                    </Button>
+                  </Link>
                 </div>
               </div>
 
@@ -261,22 +311,26 @@ export default function Home() {
               <div className="container grid grid-cols-1 md:grid-cols-2 items-center">
                 <div className="flex justify-center mt-5 md:mt-0">
                   <div className="max-w-md">
-                    <Typography variant="h2">
-                      Demand-forecast software/system
-                    </Typography>
+                    <Typography variant="h2">Demand Forecast System</Typography>
                     <Typography variant="body1" className="mt-5 text-gray-400">
-                      At Fainzy Technologies, we are committed to Lorem ipsum
-                      dolor sit amet, consectetur adipiscing elit.
+                      As consumer behaviour information is of great value to
+                      businesses, this Demand Forecast System was created as a
+                      solution, to aid in determining consumer patterns in terms
+                      of demand. With this system, restaurants are able to
+                      predict demand patterns and structure their operations
+                      accordingly.
                     </Typography>
-                    <Button
-                      className="mt-8 font-semibold max-w-xs"
-                      variant="contained"
-                      size="large"
-                      fullWidth
-                      style={{ padding: "11px 22px" }}
-                    >
-                      Learn More
-                    </Button>
+                    <Link to="/products/4">
+                      <Button
+                        className="mt-8 font-semibold max-w-xs"
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        style={{ padding: "11px 22px" }}
+                      >
+                        Learn More
+                      </Button>
+                    </Link>
                   </div>
                 </div>
 
@@ -298,7 +352,7 @@ export default function Home() {
           <div className="flex justify-center">
             <div className=" max-w-sm text-center">
               <Typography variant="h2" className="text-light-blue">
-                We’ll keep making impact
+                We'll keep making impact...
               </Typography>
             </div>
           </div>
@@ -351,7 +405,7 @@ export default function Home() {
                                   aria-controls="panel1a-content"
                                   id="panel1a-header"
                                 >
-                                  <Typography>{faq.name}</Typography>
+                                  <Typography>{faq.question}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
                                   <Typography>{faq.answer}</Typography>
@@ -505,22 +559,22 @@ const impacts = [
 
 const faqs = [
   {
-    name: "Accordion 1",
+    question: "Accordion 1",
     answer:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
   },
   {
-    name: "Accordion 1",
+    question: "Accordion 1",
     answer:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
   },
   {
-    name: "Accordion 1",
+    question: "Accordion 1",
     answer:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
   },
   {
-    name: "Accordion 1",
+    question: "Accordion 1",
     answer:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
   },
@@ -528,39 +582,7 @@ const faqs = [
 
 const partners = [
   {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
-  },
-  {
-    name: "nike",
-    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1649395502/image_10_hlmnef.png",
+    name: "Nagoya University",
+    logo: "https://res.cloudinary.com/fainzy-technologies/image/upload/v1655987686/nagoya-u_ydwlpd.png",
   },
 ];

@@ -16,6 +16,10 @@ import Register from "register/Register";
 function App() {
   const ROUTES = useRoutes([
     {
+      path: "*",
+      element: <Home />,
+    },
+    {
       path: RouteEnum.PRODUCTS_DETAIL,
       element: <Products />,
     },
@@ -43,8 +47,9 @@ function App() {
       path: RouteEnum.CONTACT_US,
       element: <Contact />,
     },
+
     {
-      path: "*",
+      path: "**",
       element: <Home />,
     },
   ]);

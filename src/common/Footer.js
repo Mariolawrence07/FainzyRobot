@@ -66,13 +66,20 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className=" container w-full flex justify-between">
-        <Typography variant="caption" className="mt-6 " color="white">
-        © 2022 Fainzy Technology
-        </Typography>
-        <Typography variant="caption" className="mt-6 " color="white">
-          
-        </Typography>
+      <div className="flex justify-center">
+        <div className=" container flex items-center justify-between   gap-3 mt-6">
+          <Typography variant="caption" className="mt-6 " color="white">
+            © 2022 Fainzy Technology
+          </Typography>
+          <div className="flex items-center justify-between   gap-3 ">
+            <Typography variant="caption" className="mt-6 " color="white">
+              Privacy
+            </Typography>
+            <Typography variant="caption" className="mt-6 " color="white">
+              Terms
+            </Typography>
+          </div>
+        </div>
       </div>
     </div>
   );

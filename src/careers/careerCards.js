@@ -20,7 +20,7 @@ const CareerCards = () => {
                   size="medium"
                   disableElevation
                 >
-                  Apply{" "}
+                  Apply{" "} 
                 </Button>
               </CardActions>
             </CardContent>

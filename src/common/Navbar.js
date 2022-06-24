@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import { RouteEnum } from "common/constants";
 import Logo from "common/Logo";
 import React, { useState } from "react";
@@ -9,15 +9,28 @@ import { Link, NavLink } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import clsx from "clsx";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Grow from "@mui/material/Grow";
-import Paper from "@mui/material/Paper";
-import Popper from "@mui/material/Popper";
-import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
-import Stack from "@mui/material/Stack";
+// import ClickAwayListener from "@mui/material/ClickAwayListener";
+// import Grow from "@mui/material/Grow";
+// import Paper from "@mui/material/Paper";
+// import Popper from "@mui/material/Popper";
+// import MenuItem from "@mui/material/MenuItem";
+// import MenuList from "@mui/material/MenuList";
+// import Stack from "@mui/material/Stack";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 export default function Navbar(props) {
+  const {i18n, t} = useTranslation(["common"])
+  useEffect(()=>{
+    if(localStorage.getItem("i18nextLng")?.length > 2){
+      i18next.changeLanguage("en")
+    }
+  },[]);
+  const handleLanguageChange = (e)=>{
+    i18n.changeLanguage(e.target.value)
+
+  }
   const { whiteNavbar } = props;
   const [isMenuLink, setIsMenuLink] = useState(true);
   const theme = useTheme();
@@ -36,30 +49,40 @@ export default function Navbar(props) {
     };
   }, []);
 
-  const selectLaguage = <div className="flex text-red">English</div>;
+  const selectLaguage = <div className="flex text-red">
+    
+    <select style={{background:"none", color:"white"}} value={localStorage.getItem("i18nextLng ")} onChange={handleLanguageChange}>
+      <option value="en">
+       En
+      </option>
+      <option value="jp">
+       Jp
+      </option>
+    </select>
+  </div>;
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
+  // const handleToggle = () => {
+  //   setOpen((prevOpen) => !prevOpen);
+  // };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
+  // const handleClose = (event) => {
+  //   if (anchorRef.current && anchorRef.current.contains(event.target)) {
+  //     return;
+  //   }
 
-    setOpen(false);
-  };
+  //   setOpen(false);
+  // };
 
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === "Escape") {
-      setOpen(false);
-    }
-  }
+  // function handleListKeyDown(event) {
+  //   if (event.key === "Tab") {
+  //     event.preventDefault();
+  //     setOpen(false);
+  //   } else if (event.key === "Escape") {
+  //     setOpen(false);
+  //   }
+  // }
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
@@ -193,7 +216,7 @@ export default function Navbar(props) {
                         {...link}
                         onClick={toggleMenuLink}
                       >
-                        {name}
+                        {t (name)}
                       </NavLink>
                     )}
                     {sectionId && (
@@ -214,7 +237,7 @@ export default function Navbar(props) {
               <ul
                 class={`flex flex-col items-center mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium`}
               >
-                <li>
+                {/* <li>
                   <Stack
                     direction="row"
                     spacing={2}
@@ -264,7 +287,7 @@ export default function Navbar(props) {
                                     <Link to="/login">SignIn</Link>
                                   </MenuItem>
                                   <MenuItem onClick={handleClose}>
-                                    <Link to="/register">SignUp</Link>
+                                    <Link to="/register">Get Started</Link>
                                   </MenuItem>
                                 </MenuList>
                               </ClickAwayListener>
@@ -274,7 +297,7 @@ export default function Navbar(props) {
                       </Popper>
                     </div>
                   </Stack>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -289,4 +312,5 @@ const LINKS = [
   { name: "Products", to: RouteEnum.PRODUCTS, sectionId: "#products" },
   { name: "Careers", to: RouteEnum.CAREERS },
   { name: "Contact Us", to: RouteEnum.CONTACT_US },
+  // { name: "Blog", to: RouteEnum.CONTACT_US },
 ];
